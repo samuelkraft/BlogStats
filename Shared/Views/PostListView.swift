@@ -17,7 +17,7 @@ struct PostListView: View {
         NavigationView {
             VStack {
                 if networkManager.loading {
-                    Text("Loading ...")
+                    ProgressView()
                 } else {
                     List(networkManager.posts.posts.sorted(by: {
                         if (sort == 1) {
