@@ -11,7 +11,25 @@ import SwiftUI
 struct BlogStatsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
+        }
+    }
+}
+
+
+
+struct MainView: View {
+    var body: some View {
+        TabView {
+            PostListView()
+                .tabItem {
+                    Label("Posts", systemImage: "list.dash")
+                }
+
+            TotalsView()
+                .tabItem {
+                    Label("Totals", systemImage: "star.fill")
+                }
         }
     }
 }

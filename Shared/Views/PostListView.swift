@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct ContentView: View {
+struct PostListView: View {
+    @State private var searchText = ""
     @State private var sort: Int = 0
     @ObservedObject var networkManager = NetworkManager()
     
@@ -28,10 +29,10 @@ struct ContentView: View {
                         }
                         
                     })) { post in
-                        NavigationLink(destination: PostDetails(post: post)){
+                        NavigationLink(destination: PostDetailView(post: post)){
                             PostRow(post: post)
                         }
-                    }
+                    }.searchable(text: $searchText)
                 }
             }.navigationTitle(Text("Blog Posts")).toolbar {
                 ToolbarItem(placement: .primaryAction) {
@@ -51,18 +52,9 @@ struct ContentView: View {
     }
 }
 
-//posts.sort(by: {$0.likes > $1.likes })
-
-struct ContentView_Previews: PreviewProvider {
+struct PostListView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-    }
-}
-
-struct PostDetails: View {
-    var post: Post
-    var body: some View {
-        Text(post.title)
+        PostListView()
     }
 }
 
