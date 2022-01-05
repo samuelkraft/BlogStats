@@ -14,7 +14,7 @@ struct TotalsView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)).ignoresSafeArea()
+                Color(.systemGroupedBackground).ignoresSafeArea()
                 VStack {
                     if networkManager.loading {
                         ProgressView()

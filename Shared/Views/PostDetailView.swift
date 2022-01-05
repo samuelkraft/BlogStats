@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-//
-
 let BASE_URL = "https://samuelkraft.com"
 
 struct PostDetailView: View {
