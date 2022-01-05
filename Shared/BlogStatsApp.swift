@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct BlogStatsApp: App {
+    @StateObject private var fetcher = PostListFetcher()
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView().environmentObject(fetcher)
         }
     }
 }

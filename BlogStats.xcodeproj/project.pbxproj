@@ -11,6 +11,8 @@
 		981CD74B2784F204006BE6E9 /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981CD7492784F204006BE6E9 /* SFSafariViewWrapper.swift */; };
 		981CD74D2785B10A006BE6E9 /* TotalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981CD74C2785B10A006BE6E9 /* TotalsView.swift */; };
 		981CD74E2785B10A006BE6E9 /* TotalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981CD74C2785B10A006BE6E9 /* TotalsView.swift */; };
+		981CD75027862C3A006BE6E9 /* PostListFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981CD74F27862C3A006BE6E9 /* PostListFetcher.swift */; };
+		981CD75127862C3A006BE6E9 /* PostListFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981CD74F27862C3A006BE6E9 /* PostListFetcher.swift */; };
 		98238E5527835B6600C269B5 /* BlogStatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98238E4527835B6500C269B5 /* BlogStatsApp.swift */; };
 		98238E5627835B6600C269B5 /* BlogStatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98238E4527835B6500C269B5 /* BlogStatsApp.swift */; };
 		98238E5727835B6600C269B5 /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98238E4627835B6500C269B5 /* PostListView.swift */; };
@@ -21,8 +23,6 @@
 		98238E662783852400C269B5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98238E642783852400C269B5 /* Post.swift */; };
 		98238E682783858000C269B5 /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98238E672783858000C269B5 /* PostList.swift */; };
 		98238E692783858000C269B5 /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98238E672783858000C269B5 /* PostList.swift */; };
-		98238E6C2783860000C269B5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98238E6B2783860000C269B5 /* NetworkManager.swift */; };
-		98238E6D2783860000C269B5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98238E6B2783860000C269B5 /* NetworkManager.swift */; };
 		98238E73278489F100C269B5 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98238E72278489F100C269B5 /* PostDetailView.swift */; };
 		98238E74278489F100C269B5 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98238E72278489F100C269B5 /* PostDetailView.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +30,7 @@
 /* Begin PBXFileReference section */
 		981CD7492784F204006BE6E9 /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
 		981CD74C2785B10A006BE6E9 /* TotalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalsView.swift; sourceTree = "<group>"; };
+		981CD74F27862C3A006BE6E9 /* PostListFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListFetcher.swift; sourceTree = "<group>"; };
 		98238E4527835B6500C269B5 /* BlogStatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogStatsApp.swift; sourceTree = "<group>"; };
 		98238E4627835B6500C269B5 /* PostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListView.swift; sourceTree = "<group>"; };
 		98238E4727835B6600C269B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,7 +39,6 @@
 		98238E5427835B6600C269B5 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		98238E642783852400C269B5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		98238E672783858000C269B5 /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
-		98238E6B2783860000C269B5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		98238E72278489F100C269B5 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,9 +73,9 @@
 			isa = PBXGroup;
 			children = (
 				98238E6E2784899D00C269B5 /* Views */,
-				98238E6A278385E200C269B5 /* Network */,
 				98238E632783850600C269B5 /* Model */,
 				98238E4527835B6500C269B5 /* BlogStatsApp.swift */,
+				981CD74F27862C3A006BE6E9 /* PostListFetcher.swift */,
 				98238E4727835B6600C269B5 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -105,14 +105,6 @@
 				98238E672783858000C269B5 /* PostList.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		98238E6A278385E200C269B5 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				98238E6B2783860000C269B5 /* NetworkManager.swift */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		98238E6E2784899D00C269B5 /* Views */ = {
@@ -226,11 +218,11 @@
 			files = (
 				98238E652783852400C269B5 /* Post.swift in Sources */,
 				98238E5727835B6600C269B5 /* PostListView.swift in Sources */,
-				98238E6C2783860000C269B5 /* NetworkManager.swift in Sources */,
 				98238E5527835B6600C269B5 /* BlogStatsApp.swift in Sources */,
 				98238E73278489F100C269B5 /* PostDetailView.swift in Sources */,
 				981CD74D2785B10A006BE6E9 /* TotalsView.swift in Sources */,
 				98238E682783858000C269B5 /* PostList.swift in Sources */,
+				981CD75027862C3A006BE6E9 /* PostListFetcher.swift in Sources */,
 				981CD74A2784F204006BE6E9 /* SFSafariViewWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,11 +233,11 @@
 			files = (
 				98238E662783852400C269B5 /* Post.swift in Sources */,
 				98238E5827835B6600C269B5 /* PostListView.swift in Sources */,
-				98238E6D2783860000C269B5 /* NetworkManager.swift in Sources */,
 				98238E5627835B6600C269B5 /* BlogStatsApp.swift in Sources */,
 				98238E74278489F100C269B5 /* PostDetailView.swift in Sources */,
 				981CD74E2785B10A006BE6E9 /* TotalsView.swift in Sources */,
 				98238E692783858000C269B5 /* PostList.swift in Sources */,
+				981CD75127862C3A006BE6E9 /* PostListFetcher.swift in Sources */,
 				981CD74B2784F204006BE6E9 /* SFSafariViewWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

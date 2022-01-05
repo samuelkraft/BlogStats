@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct PostList: Decodable {
+struct PostList: Codable {
     var posts: [Post]
 }

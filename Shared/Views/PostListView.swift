@@ -11,29 +11,40 @@ import SwiftUI
 struct PostListView: View {
     @State private var searchText = ""
     @State private var sort: Int = 0
-    @ObservedObject var networkManager = NetworkManager()
+    @EnvironmentObject var fetcher: PostListFetcher
     
     var body: some View {
         NavigationView {
             VStack {
-                if networkManager.loading {
+                if fetcher.loading {
                     ProgressView()
                 } else {
-                    List(networkManager.posts.posts.sorted(by: {
-                        if (sort == 1) {
-                            return $0.likes > $1.likes
-                        } else if (sort == 2){
-                            return $0.views > $1.views
-                        } else {
-                            return false
+                    List {
+                        ForEach(fetcher.postData.posts.sorted(by: {
+                            if (sort == 1) {
+                                return $0.likes > $1.likes
+                            } else if (sort == 2){
+                                return $0.views > $1.views
+                            } else {
+                                return false
+                            }
+                        }).filter {
+                            if searchText.isEmpty {
+                                return true
+                            } else {
+                                return $0.title.localizedCaseInsensitiveContains(searchText)
+                            }
+                        }) { post in
+                            NavigationLink(destination: PostDetailView(post: post)){
+                                PostRow(post: post)
+                            }
                         }
-                        
-                    })) { post in
-                        NavigationLink(destination: PostDetailView(post: post)){
-                            PostRow(post: post)
-                        }
-                    }.searchable(text: $searchText)
+                    }.searchable(text: $searchText).refreshable {
+                        try? await fetcher.fetchData()
+                    }
                 }
+            }.task {
+                try? await fetcher.fetchData()
             }.navigationTitle(Text("Blog Posts")).toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Menu {

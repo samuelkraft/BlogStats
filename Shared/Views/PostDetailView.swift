@@ -63,7 +63,7 @@ struct PostDetailView: View {
 
 struct PostDetail_Previews: PreviewProvider {
     static var previews: some View {
-        PostDetailView(post: fakePost)
+        PostDetailView(post: Post.defaultPost)
     }
 }
 
